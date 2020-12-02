@@ -9,38 +9,27 @@ namespace Assignment
     class Employee
     {
         private String Name;
-        private int EmpNo=0;
+        private int EmpNo;
         private decimal Basic;
         private short DeptNo;
+
+
+        private static int lastEmpNo=0;
         public Employee()
         {
-            EmpNo++; 
-            Console.WriteLine(EmpNo);
-           
-        }
-        public Employee(String Name,decimal Basic, short DeptNo)
+        
+            
+         }
+        public Employee(String Name="NoName",decimal Basic=12000, short DeptNo=15)
         {
             this.Name = Name;
+            this.EmpNo = ++lastEmpNo;
             this.Basic = Basic;
             this.DeptNo = DeptNo;
         }
-        public Employee(String Name, decimal Basic)
-        {
-
-            this.Name = Name;
-            this.Basic = Basic;
-
-        }
-        public Employee(String Name)
-        {
-
-            this.Name = Name;
-          
-
-        }
 
 
-        public String P1
+        public String Ename
         {
             set
             {
@@ -60,16 +49,13 @@ namespace Assignment
                     }
 
         }
-        public int P2
+        public int Empno
         {
-          
-            get
-            {
-                return EmpNo;
-            }
+
+            get { return EmpNo; }
 
         }
-        public short P4
+        public short Dept
         {
             set
             {
@@ -87,68 +73,101 @@ namespace Assignment
                 return DeptNo;
             }
         }
+        //public decimal Salary
+        //{
+        //    set
+        //    {
+        //        if (value > 0 && value < 15000)
+        //        {
+        //            Basic= value;
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("Invalid input");
+        //        }
+        //    }
+        //    get
+        //    {
+        //        return Basic;
+        //    }
+        //}
 
 
-        
+
 
 
         private decimal HRA;
         private decimal DA;
 
-        public void SetNetSalary(decimal Basic)
+        public decimal GetNetSalary()
         {
             if (Basic < 10000)
             {
-
                 HRA = Basic * 1 / 10;
                 DA = Basic * 9 / 10;
-
-
             }
             else
             {
-
                 HRA = 2000;
                 DA = (Basic * 9 / 10);
-
             }
 
-
-
-
-        }
-
-        
-        public decimal GetNetSalary()
-        {
-            
             return Basic + HRA + DA;
         }
+
+        //public void SetNetSalary(decimal Basic)
+        //{
+        //    if (Basic < 10000)
+        //    {
+
+        //        HRA = Basic * 1 / 10;
+        //        DA = Basic * 9 / 10;
+
+
+        //    }
+        //    else
+        //    {
+
+        //        HRA = 2000;
+        //        DA = (Basic * 9 / 10);
+
+        //    }
+
+
+
+
+        //}
+
+        
+        //public decimal GetNetSalary()
+        //{
+            
+        //    return Basic + HRA + DA;
+        //}
         static void Main(string[] args)
 
         {
-           Employee e1 = new Employee("Lalit", 1000, 20);
-           Employee e2 = new Employee("Amit", 12000, 15);
-           Employee e3 = new Employee("Amol", 123465);
-           Employee e4 = new Employee("Amol");
-           Employee e5 = new Employee();
-            Console.WriteLine(e1.P1);
-            Console.WriteLine(e1.EmpNo);
-            e1.SetNetSalary(e1.Basic); 
-            Console.WriteLine(e1.GetNetSalary());
-            Console.WriteLine(e1.P4);
+            Employee o1 = new Employee("Amol",10000, 10);
+            Employee o2 = new Employee("Amit", 123465);
+            Employee o3 = new Employee("Ashish");
+            Employee o4 = new Employee();
 
-            Console.WriteLine(e2.P1);
-            Console.WriteLine(e2.P2);
-            e2.SetNetSalary(e2.Basic); ;
-            Console.WriteLine(e2.GetNetSalary());
-            Console.WriteLine(e2.P4);
 
-            Console.WriteLine(e3.P1);
-            Console.WriteLine(e3.P2);
-            e3.SetNetSalary(e3.Basic);
-            Console.WriteLine(e3.GetNetSalary());
-            Console.WriteLine(e3.P4);
+            // o1.SetNetSalary(10000);
+            // Employee o1 = new Employee();
+            //Employee o2 = new Employee();
+            //Employee o3 = new Employee();
+            Console.WriteLine(o1.Empno + " | " + o1.Ename + " | " + o1.Dept + " | " + o1.GetNetSalary());
+            Console.WriteLine(o2.Empno + " | " + o2.Ename + " | " + o2.Dept + " | " + o2.GetNetSalary());
+            Console.WriteLine(o3.Empno + " | " + o3.Ename + " | " + o3.Dept + " | " + o3.GetNetSalary());
+            Console.WriteLine(o4.Empno + " | " + o4.Ename + " | " + o4.Dept + " | " + o4.GetNetSalary());
+            Console.WriteLine("=================================================");
+            Console.WriteLine(o4.Empno + " | " + o4.Ename + " | " + o4.Dept + " | " + o4.GetNetSalary());
+            Console.WriteLine(o3.Empno + " | " + o3.Ename + " | " + o3.Dept + " | " + o3.GetNetSalary());
+            Console.WriteLine(o2.Empno + " | " + o2.Ename + " | " + o2.Dept + " | " + o2.GetNetSalary());
+            Console.WriteLine(o1.Empno + " | " + o1.Ename + " | " + o1.Dept + " | " + o1.GetNetSalary());
+
+
             Console.ReadLine();
 
         }
